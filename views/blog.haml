@@ -1,2 +1,4 @@
 %h1 Blog
-
+- @posts.each do |post|
+  :markdown
+    #{post.body}

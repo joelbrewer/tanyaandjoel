@@ -11,5 +11,6 @@ get '/' do
 end
 
 get '/blog' do
+  @posts = Post.all
   haml :blog
 end
