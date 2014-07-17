@@ -17,6 +17,8 @@ GEM
     arel (5.0.1.20140414130214)
     bond (0.5.1)
     builder (3.2.2)
+    haml (4.0.5)
+      tilt
     i18n (0.6.11)
     json (1.8.1)
     minitest (5.4.0)
@@ -58,6 +60,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  haml
   shotgun
   sinatra
   sinatra-activerecord
