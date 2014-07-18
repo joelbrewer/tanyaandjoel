@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'sinatra'
 gem 'sqlite3'
+gem 'sass'
 gem 'haml'
 gem 'rdiscount'
 gem 'activerecord'

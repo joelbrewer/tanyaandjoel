@@ -14,3 +14,7 @@ get '/blog' do
   @posts = Post.all
   haml :blog
 end
+
+get '/style.css' do
+  scss :style
+end

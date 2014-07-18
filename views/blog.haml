@@ -1,4 +1,5 @@
-%h1 Blog
 - @posts.each do |post|
+  %h1= post.title
+  .meta= post.created_at.strftime("%d %b %Y")
   :markdown
     #{post.body}
