@@ -1,5 +1,2 @@
 - @posts.each do |post|
-  %h1= post.title
-  .meta= post.created_at.strftime("%d %b %Y")
-  :markdown
-    #{post.body}
+  = haml :post, :locals => {:post => post }

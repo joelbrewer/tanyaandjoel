@@ -1,1 +1,8 @@
+#welcome_photo.center
+  = haml random_photo_from("/public/home")
 %h2.center Welcome to our humble abode. Our small section of the internet.
+#latest.center
+  %span Latest post:
+  %span
+    %a{ :href => "blog/#{@latest_post.title.downcase}"}= @latest_post.title
+  

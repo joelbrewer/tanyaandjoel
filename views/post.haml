@@ -1,4 +1,4 @@
-%h1= @post.title
-.meta= @post.created_at.strftime("%d %b %Y")
+%h1= post.title
+.meta= post.created_at.strftime("%d %b %Y")
 :markdown
-  #{@post.body}
+  #{post.body}
