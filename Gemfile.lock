@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activemodel (4.1.4)
       activesupport (= 4.1.4)
@@ -17,11 +17,25 @@ GEM
     arel (5.0.1.20140414130214)
     bond (0.5.1)
     builder (3.2.2)
+    capistrano (2.15.5)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     haml (4.0.5)
       tilt
+    highline (1.6.21)
     i18n (0.6.11)
     json (1.8.1)
     minitest (5.4.0)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.9.1)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -36,6 +50,8 @@ GEM
       rack (>= 1.0)
       rack-test (~> 0.6.2)
       ripl (>= 0.7.0)
+    rvm-capistrano (1.3.4)
+      capistrano (>= 2.0.0)
     sass (3.3.5)
     shotgun (0.9)
       rack (>= 1.0)
@@ -62,8 +78,10 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  capistrano (~> 2.15.5)
   haml
   rdiscount
+  rvm-capistrano (~> 1.3.3)
   sass
   shotgun
   sinatra
