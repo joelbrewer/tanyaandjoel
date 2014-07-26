@@ -32,7 +32,7 @@ ssh_options[:forward_agent] = true
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "keys/tolkien_key_pair.cer")]
 ssh_options[:paranoid] = false
 default_run_options[:pty] = true
-set :use_sudo, false
+set :use_sudo, true
 
 after "deploy:cold" do
   admin.nginx_restart
