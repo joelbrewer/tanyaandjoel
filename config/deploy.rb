@@ -2,10 +2,10 @@ require 'rvm/capistrano'
 require 'bundler/capistrano'
 
 #RVM and bundler settings
-set :bundle_cmd, "/Users/joelbrewer/.rvm/gems/ruby-2.0.0-p353@global/bin/bundle"
-set :bundle_dir, "/Users/joelbrewer/.rvm/gems/ruby-2.0.0-p353/gems"
-set :rvm_ruby_string, :local
-set :rack_env, :production
+#set :bundle_cmd, "/Users/joelbrewer/.rvm/gems/ruby-2.0.0-p353@global/bin/bundle"
+#set :bundle_dir, "/Users/joelbrewer/.rvm/gems/ruby-2.0.0-p353/gems"
+#set :rvm_ruby_string, :local
+#set :rack_env, :production
 
 #general info
 set :user, 'ubuntu'
