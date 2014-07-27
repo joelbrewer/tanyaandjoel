@@ -9,7 +9,7 @@ require 'bundler/capistrano'
 
 #general info
 set :user, 'ubuntu'
-set :domain, 'ec2-54-191-201-125.us-west-2.compute.amazonaws.com'
+set :domain, 'tanyaandjoel.com'
 
 set :applicationdir, "/home/www/tanyaandjoel"
 set :scm, 'git'
@@ -28,7 +28,6 @@ set :deploy_to, applicationdir
 set :deploy_via, :export
 
 #additional settings -- mostly SSH
-#ssh_options[:forward_agent] = true
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "keys/tolkien_key_pair.cer")]
 ssh_options[:paranoid] = false
 default_run_options[:pty] = true

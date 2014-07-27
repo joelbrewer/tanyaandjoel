@@ -15,8 +15,18 @@ class TanyaAndJoel < Sinatra::Base
       random = Random.new.rand(1..num_photos)
       "%img(src='home/home#{random}.jpg')"
     end
+
+    def protected!
+      return if authorized?
+      headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
+      halt 401, "Not authorized\n"
+    end
+
+    def authorized?
+      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+    end
   end
-    
 
   get '/' do
     @latest_post = Post.last
@@ -35,6 +45,11 @@ class TanyaAndJoel < Sinatra::Base
     else
       haml :error
     end
+  end
+
+  get '/protected' do
+    protected!
+    "Well hello there you sly dog."
   end
 
   get '/style.css' do
