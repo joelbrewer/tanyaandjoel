@@ -80,6 +80,7 @@ DEPENDENCIES
   activerecord
   capistrano (~> 2.15.5)
   haml
+  rack-test
   rdiscount
   rvm-capistrano (~> 1.3.3)
   sass
