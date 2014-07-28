@@ -29,5 +29,11 @@ nav a
   width: 60%;
   margin: 0 auto;
 }
-
 .center { text-align: center; }
+
+@media (max-width: 768px) {
+#main {
+  width: 90%;
+  }
+}
+

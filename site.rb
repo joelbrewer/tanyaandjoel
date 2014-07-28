@@ -2,13 +2,22 @@ require 'haml'
 require 'sinatra'
 require 'sinatra/activerecord'
 
-set :database, 'sqlite3:blog.db'
+configure :development do
+  set :database, 'sqlite3:blog-dev.db'
+end
+
+configure :production do
+  set :database, 'sqlite3:blog-production.db'
+end
+
+configure :test do
+  set :database, 'sqlite3:blog-test.db'
+end
+
+class Post < ActiveRecord::Base
+end
 
 class TanyaAndJoel < Sinatra::Base
-
-  class Post < ActiveRecord::Base
-  end
-
   helpers do
     def random_photo_from(directory)
       dir = File.dirname(__FILE__) + directory
@@ -25,7 +34,7 @@ class TanyaAndJoel < Sinatra::Base
 
     def authorized?
       @auth ||= Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', ENV["TANYA_AND_JOEL_ADMIN_PASSWORD"]]
     end
   end
 
