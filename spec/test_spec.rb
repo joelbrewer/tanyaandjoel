@@ -1,5 +1,8 @@
 require File.expand_path '../test_helper.rb', __FILE__
 
+class Post < ActiveRecord::Base
+end
+
 class TanyaAndJoelTest < MiniTest::Test
 
   include Rack::Test::Methods
@@ -9,11 +12,12 @@ class TanyaAndJoelTest < MiniTest::Test
   end
 
   def test_it_shows_latest_post_title
-    lucille_viii = Post.new(:title => "Lucille VIII", :text => "meow.").save
+    lucille_viii = Post.new(:title => "Lucille VIII", :body => "meow.").save
 
-    get '/', :latest_post => lucille_viii
+    get '/', @latest_post => lucille_viii
     assert last_response.ok?
-    assert last_response.body.include?('Lucile VIII')
+    puts last_response.body.include?("Lucille VIII")
   end
 end
                                        
+
