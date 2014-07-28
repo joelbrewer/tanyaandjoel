@@ -17,7 +17,14 @@ class TanyaAndJoelTest < MiniTest::Test
 
     get '/', @latest_post => Post.last
     assert last_response.ok?
-    puts last_response.body.include?("Lucille VIII")
+    assert last_response.body.include?("Lucille VIII")
+  end
+
+  def test_existant_blog_id_links_to_blog_page
+    post = Post.create(:title => "Lucille", :body => "meow.")
+    id = post.id
+    get "/blog/#{id}"
+    assert last_response.body.include?("meow.")
   end
 
   def test_existant_blog_title_links_to_blog_page
@@ -38,6 +45,15 @@ class TanyaAndJoelTest < MiniTest::Test
     assert last_response.body.include?("Lord of the Rings")
     assert last_response.body.include?("Mere Christianity")
   end
-end
-                                       
 
+  def test_edit_page_displays_post
+    post = Post.create(:title => "Lucille", :body => "meow.")
+    get "/posts/#{post.id}/edit"
+    assert last_response.body.include?("Lucille")
+  end
+
+  def test_edit_forms_modifies_post
+    post = Post.create(:title => "Lucille", :body => "meow.")
+    put "/posts/#{post.id}"
+  end
+end

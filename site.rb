@@ -48,14 +48,34 @@ class TanyaAndJoel < Sinatra::Base
     haml :blog
   end
 
-  get '/blog/:title' do
-    @post = Post.find_by title: params[:title].capitalize
+
+  get '/blog/:id' do
+    @post = Post.find(params[:id])
     if @post
       haml :post, :locals => {:post => @post }
     else
       haml :error
     end
   end
+
+  #get '/blog/:title' do
+  #  @post = Post.find_by title: params[:title].capitalize
+  #  if @post
+  #    haml :post, :locals => {:post => @post }
+  #  else
+  #    haml :error
+  #  end
+  #end
+
+  get '/posts/:id/edit' do
+    @post = Post.find(params[:id])
+    haml :"posts/edit"
+  end
+
+  #put '/posts/:id' do
+  #  @post = Post.find(params[:id])
+  #  if @post.update_attributes(params[:post])
+  #    redirect "/blog/#{@post.id}"
 
   get '/protected' do
     protected!
@@ -65,5 +85,4 @@ class TanyaAndJoel < Sinatra::Base
   get '/style.css' do
     scss :style
   end
-
 end
